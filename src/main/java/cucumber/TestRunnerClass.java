@@ -6,16 +6,17 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "C:\\Users\\sakib\\Downloads\\Java_PNT\\src\\main\\java\\cucumber\\Customers.feature",
+        features = {
+                "C:\\Users\\sakib\\Downloads\\Java_PNT\\src\\main\\java\\cucumber\\Customers.feature",
 
-        //features = "C:\\Users\\sakib\\Downloads\\Java_PNT\\src\\main\\java\\cucumber\\LoginFeatures.feature",
-
+                "C:\\Users\\sakib\\Downloads\\Java_PNT\\src\\main\\java\\cucumber\\LoginFeatures.feature"},
         //StepDefinition class
         glue = "cucumber",
         //true will check compatibility
         dryRun = false,
         //output readable
         monochrome = true,
+        tags = "@Regression",
         plugin = {"pretty"}
 )
 

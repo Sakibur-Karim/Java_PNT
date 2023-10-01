@@ -1,25 +1,34 @@
 package cucumber;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
 
-public class StepDefinitionClass {
-    public WebDriver driver;
-    public LoginPage lp;
-    public AddNewCustomerPage ancp;
-    public SearchCustomerByEmail scbe;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
-    @Given("User Launch Chrome browser")
-    public void user_launch_chrome_browser() {
+public class StepDefinitionClass extends BaseClass {
+
+    @Before
+    public void setup() {
         WebDriverManager.edgedriver().setup();
         driver = new EdgeDriver();
         driver.manage().window().maximize();
+    }
+
+    @Given("User Launch Chrome browser")
+    public void user_launch_chrome_browser() {
         //Allocating memory to LoginPage
         lp = new LoginPage(driver);
         //Allocating memory to AddNewCustomerPage
@@ -103,8 +112,7 @@ public class StepDefinitionClass {
     @When("User enter customer info")
     public void user_enter_customer_info() throws InterruptedException {
         Thread.sleep(3000);
-        //ancp.enterEmail(generateEmail() + "@gmail.com");
-        ancp.enterEmail("enive18nfu@yopmail.com");
+        ancp.enterEmail(generateEmailID() + "@gmail.com");
         ancp.enterPassword("Test123");
         ancp.enterFirstName("X");
         ancp.enterLastName("Y");
@@ -128,7 +136,7 @@ public class StepDefinitionClass {
 
     @When("Enter customer Email")
     public void enter_customer_email() {
-        scbe.enterEmail("CVAUM@gmail.com");
+        scbe.enterEmail(" ");
     }
 
     @When("click on search button")
@@ -139,9 +147,18 @@ public class StepDefinitionClass {
 
     @Then("User should found Email in the search table")
     public void user_should_found_email_in_the_search_table() throws InterruptedException {
-        String expectedEmail = "CVAUM@gmail.com";
+        String expectedEmail = " ";
         Assert.assertTrue(scbe.searchCustomerByEmail(expectedEmail));
+    }
 
+    @After
+    public void tearDown(Scenario sc) throws IOException {
+        if (sc.isFailed() == true) {
+            File f = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            Files.copy(f.toPath(), new File ("C:/Users/sakib/Downloads/Java_PNT/Screenshot/Failed.jpg").toPath());
+        }
+        System.out.println("Teardown executed");
+        driver.quit();
     }
 
 }
