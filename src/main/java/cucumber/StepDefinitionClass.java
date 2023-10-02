@@ -114,10 +114,10 @@ public class StepDefinitionClass extends BaseClass {
         Thread.sleep(3000);
         ancp.enterEmail(generateEmailID() + "@gmail.com");
         ancp.enterPassword("Test123");
-        ancp.enterFirstName("X");
-        ancp.enterLastName("Y");
+        ancp.enterFirstName("P");
+        ancp.enterLastName("NT");
         ancp.enterDOB("1/1/2050");
-        ancp.enterCompanyName("TinCan");
+        ancp.enterCompanyName("PNT");
         ancp.enterGender("Male");
     }
 

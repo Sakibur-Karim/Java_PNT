@@ -20,11 +20,11 @@ public class SynchronizationEx1 {
         driver.get(url);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.findElement(By.linkText("START2 SELLING")).click();
+        driver.findElement(By.linkText("START SELLING")).click();
         Stopwatch watch = null;
         try {
             watch = Stopwatch.createStarted();
-            driver.findElement(By.linkText("START2 SELLING")).click();
+            driver.findElement(By.linkText("START SELLING")).click();
         } catch (Exception e) {
             watch.stop();
             System.out.println(watch.elapsed(TimeUnit.SECONDS));
