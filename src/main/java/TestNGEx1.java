@@ -117,9 +117,9 @@ public class TestNGEx1 {
         List<WebElement> columnList = CommonUI.driver.findElements(By.xpath("//table/tbody/tr[1]/th"));
         System.out.println(columnList.size());
 
-        for (int r=2; r<rowList.size(); r++) {
-            for (int c=1; c<columnList.size(); c++) {
-                String data = CommonUI.driver.findElement(By.xpath("//table/tbody/tr["+r +"]/td[" +c +"]")).getText();
+        for (int r = 2; r < rowList.size(); r++) {
+            for (int c = 1; c < columnList.size(); c++) {
+                String data = CommonUI.driver.findElement(By.xpath("//table/tbody/tr[" + r + "]/td[" + c + "]")).getText();
                 System.out.println(data);
             }
         }
@@ -132,9 +132,9 @@ public class TestNGEx1 {
         System.out.println(rowList.size());
         List<WebElement> columnList = CommonUI.driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr"));
         System.out.println(columnList.size());
-        for (int r=2;r<=rowList.size();r++) {
-            for (int c=1;c<=columnList.size();c++) {
-                String data = CommonUI.driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr[" +r +"]/td["+c +"]")).getText();
+        for (int r = 2; r <= rowList.size(); r++) {
+            for (int c = 1; c <= columnList.size(); c++) {
+                String data = CommonUI.driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr[" + r + "]/td[" + c + "]")).getText();
                 System.out.println(data);
             }
         }

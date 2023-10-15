@@ -8,7 +8,7 @@ import org.testng.annotations.DataProvider;
 
 public class DataProviderDemo {
 
-    @DataProvider(name = "searchDataSet")
+//    @DataProvider(name = "searchDataSet")
     public Object [][] searchData() {
         Object [][] searchKeywords = new Object[3][2];
         searchKeywords[0][0] = "USA";

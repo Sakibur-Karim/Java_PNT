@@ -59,7 +59,7 @@ public class StepDefinitionClass extends BaseClass {
         String actualTitle = driver.getTitle();
         System.out.println(actualTitle);
         if (actualTitle.equals(expectedTitle)) Assert.assertTrue(true);
-        else Assert.assertTrue(false);
+        else Assert.fail();
     }
 
     @When("User click on Log out link")
@@ -131,7 +131,7 @@ public class StepDefinitionClass extends BaseClass {
     public void user_can_view_confirmation_message(String expectedConfirmMessage) {
         String text = driver.findElement(By.tagName("Body")).getText();
         if (text.contains(expectedConfirmMessage)) Assert.assertTrue(true);
-        else Assert.assertTrue(false);
+        else Assert.fail();
     }
 
     @When("Enter customer Email")
@@ -153,7 +153,7 @@ public class StepDefinitionClass extends BaseClass {
 
     @After
     public void tearDown(Scenario sc) throws IOException {
-        if (sc.isFailed() == true) {
+        if (sc.isFailed()) {
             File f = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
             Files.copy(f.toPath(), new File ("C:/Users/sakib/Downloads/Java_PNT/Screenshot/Failed.jpg").toPath());
         }
